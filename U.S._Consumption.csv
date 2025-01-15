@@ -1,0 +1,33 @@
+"1. U.S. Energy Markets Summary"
+"https://www.eia.gov/outlooks/steo/data/browser/#/?v=3&f=A&s=0&start=2010&end=2025&maptype=0&ctype=linechart&linechart=COPRPUS"
+"Sat Jan 11 2025 13:27:48 GMT-0500 (Eastern Standard Time)"
+"Source: U.S. Energy Information Administration"
+"remove","","map","linechart","units","source key","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"
+"1. U.S. Energy Markets Summary","1. U.S. Energy Markets Summary",0,0,,,,,,,,,,,,,,,,,,
+"Energy Production","Energy Production",0,0,,,,,,,,,,,,,,,,,,
+"Crude Oil Production","U.S. Crude Oil Production",1,1,"million barrels per day","COPRPUS",5.48,5.67,6.52,7.50,8.78,9.43,8.85,9.36,10.96,12.31,11.32,11.31,11.99,12.93,13.24,13.52
+"Dry Natural Gas Production","U.S. Dry Natural Gas Production",1,1,"billion cubic feet per day","NGPRPUS",58.40,62.74,65.66,66.32,70.93,74.15,72.66,74.91,84.31,92.87,92.38,94.60,99.60,103.75,103.17,103.70
+"Coal Production","U.S. Coal Production",1,1,"million short tons","CLPRPUS_TON",1084,1096,1016,985,1000,897,728,775,756,706,535,577,594,578,509,472
+"Energy Consumption","Energy Consumption",0,0,,,,,,,,,,,,,,,,,,
+"Liquid Fuels","U.S. Liquid Fuels Consumption",1,1,"million barrels per day","PATCPUSX",19.18,18.90,18.48,18.97,19.10,19.53,19.69,19.95,20.51,20.54,18.19,19.89,20.01,20.28,20.29,20.53
+"Natural Gas","U.S. Natural Gas Consumption",1,1,"billion cubic feet per day","NGTCPUS",65.99,67.06,69.78,71.66,72.86,74.64,74.98,74.36,82.57,85.29,83.54,83.96,88.46,89.11,90.52,90.18
+"Coal","U.S. Coal Consumption",1,1,"million short tons","CLTCPUS_TON",1049,1003,889,924,918,798,731,717,688,587,477,546,516,426,406,409
+"Electricity","U.S. Electricity Consumption",1,1,"billion kilowatthours per day","ESTXPUS",10.65,10.64,10.47,10.60,10.69,10.69,10.66,10.59,10.97,10.83,10.54,10.81,11.14,10.99,11.16,11.41
+"Renewables","U.S. Renewables Consumption",1,1,"quadrillion btu","RETCBUS",7.65,8.42,7.93,6.59,6.80,6.83,7.12,7.38,7.52,7.58,7.29,7.63,8.08,8.25,8.65,9.20
+"Total Energy Consumption","U.S. Total Energy Consumption",1,1,"quadrillion btu","TETCFUEL",97.61,96.95,94.48,94.25,95.33,94.48,94.09,93.90,97.39,96.59,88.87,93.35,94.81,93.69,94.18,95.15
+"Energy Prices","Energy Prices",0,0,,,,,,,,,,,,,,,,,,
+"Crude Oil West Texas Intermediate Spot","West Texas Intermediate Crude Oil Spot Price",1,1,"dollars per barrel","WTIPUUS",79.50,94.90,94.08,97.98,93.17,48.67,43.33,50.79,65.07,56.99,39.17,68.21,94.91,77.58,76.51,69.12
+"Natural Gas Henry Hub Spot","Natural Gas Henry Hub Spot Price",1,1,"dollars per million btu","NGHHUUS",4.39,4.00,2.75,3.73,4.39,2.63,2.51,2.99,3.15,2.57,2.03,3.91,6.42,2.54,2.19,2.95
+"Coal","Electric Power Sector Coal Cost",1,1,"dollars per million btu","CLEUDUS",2.27,2.39,2.38,2.34,2.37,2.22,2.11,2.06,2.06,2.02,1.92,1.98,2.36,2.51,2.47,2.40
+"Macroeconomic","Macroeconomic",0,0,,,,,,,,,,,,,,,,,,
+"Real Gross Domestic Product","Real Gross Domestic Product",1,1,"billion chained 2012 dollars - saar","GDPQXUS",16790,17052,17443,17812,18262,18800,19142,19612,20194,20716,20268,21495,22035,22671,23284,23777
+"Percent change from prior year","Real Gross Domestic Product",1,1,"percent change from prior year","GDPQXUS_PCT",2.7,1.6,2.3,2.1,2.5,2.9,1.8,2.5,3.0,2.6,-2.2,6.1,2.5,2.9,2.7,2.1
+"GDP Implicit Price Deflator","GDP Implicit Price Deflator",1,1,"index, 2017=100","GDPDIUS",89.6,91.5,93.2,94.8,96.4,97.3,98.2,100.0,102.3,104.0,105.4,110.2,118.0,122.3,125.2,127.9
+"Percent change from prior year","GDP Implicit Price Deflator",1,1,"percent change from prior year","GDPDIUS_PCT",1.2,2.1,1.9,1.7,1.7,0.9,1.0,1.8,2.3,1.7,1.3,4.5,7.1,3.6,2.4,2.2
+"Real Disposable Personal Income","Real Disposable Personal Income",1,1,"billion chained 2017 dollars - saar","YD87OUS",12505,12775,13125,12937,13384,13909,14172,14614,15144,15617,16609,17189,16229,17052,17592,18085
+"Percent change from prior year","Real Disposable Personal Income",1,1,"percent change from prior year","YD87OUS_PCT",1.9,2.2,2.7,-1.4,3.5,3.9,1.9,3.1,3.6,3.1,6.3,3.5,-5.6,5.1,3.2,2.8
+"Manufacturing Production Index","Manufacturing Production Index",1,1,"index, year 2017=100","ZOMNIUS",92.4,95.4,98.2,99.3,100.5,100.1,99.4,100.0,101.4,99.5,93.0,97.7,100.3,100.0,99.6,100.9
+"Percent change from prior year","Manufacturing Production Index",1,1,"percent change from prior year","ZOMNIUS_PCT",6.6,3.2,2.9,1.1,1.2,-0.4,-0.7,0.7,1.4,-1.9,-6.5,5.0,2.7,-0.4,-0.4,1.3
+"Weather","Weather",0,0,"degree days",,,,,,,,,,,,,,,,,
+"U.S. Heating Degree Days","U.S. Heating Degree Days",1,1,"degree days","ZWHDPUS",4461,4312,3771,4470,4558,4094,3887,3838,4291,4317,3914,3934,4245,3806,3776,3975
+"U.S. Cooling Degree Days","U.S. Cooling Degree Days",1,1,"degree days","ZWCDPUS",1457,1470,1494,1305,1295,1485,1554,1423,1579,1496,1519,1492,1556,1474,1625,1569

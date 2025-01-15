@@ -1,0 +1,53 @@
+"7a. U.S. Electricity Industry Overview"
+"https://www.eia.gov/outlooks/steo/data/browser/#/?v=19&f=A&s=0&ctype=linechart&maptype=0&id="
+"Fri Jan 10 2025 10:48:13 GMT-0500 (Eastern Standard Time)"
+"Source: U.S. Energy Information Administration"
+"remove","","map","linechart","units","source key","2019","2020","2021","2022","2023","2024","2025"
+"7a. U.S. Electricity Industry Overview","7a. U.S. Electricity Industry Overview",0,0,,,,,,,,,
+"Electricity Supply","Electricity Supply",0,0,,,,,,,,,
+"Total Utility-Scale Power Supply","Electricity Total Supply",1,1,"billion kilowatthours","ELSUTWH",4170,4057,4149,4272,4202,4322,4384
+"Electricity Generation","Total Electricity Generation",1,1,"billion kilowatthours","TSEOTWH",4131,4010,4110,4231,4183,4308,4359
+"Electric Power Sector","Electricity Generation Electric Power Sector",1,1,"billion kilowatthours","EPEOTWH",3968,3854,3957,4074,4029,4153,4201
+"Industrial Sector","Electricity Generation Industrial Sector",1,1,"billion kilowatthours","INEOTWH",149,143,140,140,139,138,140
+"Commercial Sector","Electricity Generation Commercial Sector",1,1,"billion kilowatthours","CMEOTWH",14,13,13,17,16,17,18
+"Net Imports","Electricity Net Imports",1,1,"billion kilowatthours","ELNITWH",39,47,39,41,19,14,24
+"Small-scale solar generation","Small-scale solar generation, all sectors",1,1,"billion kilowatthours","SODTP_US",35,42,49,61,73,84,94
+"Residential sector","Small-scale solar generation, residential sector",1,1,"billion kilowatthours","SODRP_US",21,25,30,40,49,57,63
+"Commercial sector","Small-scale solar generation, commercial sector",1,1,"billion kilowatthours","SODCP_US",11,13,15,18,20,22,26
+"Industrial sector ","Small-scale solar generation, industrial sector",1,1,"billion kilowatthours","SODIP_US",3,3,4,4,4,5,5
+"Losses and Unaccounted For","Electricity Losses and Unaccounted For",1,1,"billion kilowatthours","TDLOTWH",215,201,204,205,190,236,218
+"Electricity Consumption","Electricity Consumption",0,0,,,,,,,,,
+"Total Consumption","Electricity Total Consumption",1,1,"billion kilowatthours","ELCOTWH",3954,3856,3945,4067,4012,4086,4165
+"Sales to Ultimate Customers","Electricity Total Sales to Ultimate Customers",1,1,"billion kilowatthours","ELTCTWH",3811,3718,3806,3927,3874,3948,4024
+"Residential Sector","Electricity Residential Sales",1,1,"billion kilowatthours","ELRCTWH",1440,1465,1470,1509,1450,1494,1513
+"Commercial Sector","Electricity Commercial Sales",1,1,"billion kilowatthours","ELCCTWH",1361,1287,1328,1391,1408,1420,1442
+"Industrial Sector","Electricity Industrial Sales",1,1,"billion kilowatthours","ELICTWH",1002,959,1001,1020,1009,1026,1063
+"Transportation Sector","Electricity Transportation Sales",1,1,"billion kilowatthours","ELACTWH",8,7,6,7,7,7,7
+"Direct Use","Electricity Direct Use",1,1,"billion kilowatthours","ELDUTWH",143,139,139,140,138,138,141
+"Residential Electricity Usage Per Customer","Average Residential Electricity Usage Per Customer",1,1,"kilowatthours","EXRCH_US",10649,10715,10632,10791,10297,10496,10506
+"End-of-Period Fuel Inventories Held by Electric Power Sector","End-of-Period Fuel Inventories Held by Electric Power Sector",0,0,,,,,,,,,
+"Coal","Coal Secondary Inventories Electric Power Sector",1,1,"million short tons","CLPS_EP",128.1,131.4,91.9,88.9,133.3,130.5,100.0
+"Residual Fuel","Residual Fuel Oil Stocks, Electric Power Sector",1,1,"million barrels","RFPS_EP",8.5,8.3,7.0,5.8,6.1,5.4,2.6
+"Distillate Fuel ","Distillate Fuel Oil Stocks, Electric Power Sector",1,1,"million barrels","DKPS_EP",16.7,17.1,18.2,16.5,17.6,17.2,17.0
+"Prices","Prices",0,0,,,,,,,,,
+"Power Generation Fuel Costs","Power Generation Fuel Costs",0,0,"dollars per million btu",,,,,,,,
+"Coal","Power Generation Coal Cost",1,1,"dollars per million btu","CLEUDUS",2.02,1.92,1.98,2.36,2.51,2.47,2.40
+"Natural Gas","Power Generation Natural Gas Cost",1,1,"dollars per million btu","NGEUDUS",2.88,2.40,5.20,7.21,3.36,2.69,3.20
+"Residual Fuel Oil","Power Generation Residual Fuel Cost",1,1,"dollars per million btu","RFEUDUS",12.73,9.15,13.66,21.58,19.36,17.40,13.98
+"Distillate Fuel Oil","Power Generation Distillate Fuel Cost",1,1,"dollars per million btu","DKEUDUS",15.16,10.89,15.61,25.01,21.87,18.54,17.75
+"Prices to Ultimate Customers","Prices to Ultimate Customers",0,0,"cents per kilowatthour",,,,,,,,
+"Residential Sector","Retail Electricity Price Residential Sector",1,1,"cents per kilowatthour","ESRCUUS",13.01,13.16,13.66,15.04,16.00,16.37,16.66
+"Commercial Sector","Retail Electricity Price Commercial Sector",1,1,"cents per kilowatthour","ESCMUUS",10.67,10.59,11.22,12.41,12.59,12.92,13.27
+"Industrial Sector","Retail Electricity Price Industrial Sector",1,1,"cents per kilowatthour","ESICUUS",6.81,6.67,7.18,8.32,8.04,8.13,8.20
+"Wholesale Electricity Prices","Wholesale Electricity Prices",0,0,,,,,,,,,
+"ERCOT North hub","Wholesale Electricity Price, ERCOT North hub",1,1,"dollars per megawatthour","ELWHU_TX",56.24,26.99,189.54,77.41,77.00,33.36,27.55
+"CAISO SP15 zone","Wholesale Electricity Price, CAISO SP15 zone",1,1,"dollars per megawatthour","ELWHU_CA",38.15,38.15,53.53,87.67,60.17,29.84,36.41
+"ISO-NE Internal hub","Wholesale Electricity Price, ISO-NE Internal hub",1,1,"dollars per megawatthour","ELWHU_NE",34.89,26.52,51.81,92.42,41.36,44.03,62.59
+"NYISO Hudson Valley zone","Wholesale Electricity Price, NYISO Hudson Valley zone",1,1,"dollars per megawatthour","ELWHU_NY",30.56,22.85,46.14,90.42,37.96,39.91,45.55
+"PJM Western hub","Wholesale Electricity Price, PJM Western hub",1,1,"dollars per megawatthour","ELWHU_PJ",30.85,24.49,45.67,83.48,39.34,41.14,44.82
+"MISO Illinois hub","Wholesale Electricity Price, MISO Illinois hub",1,1,"dollars per megawatthour","ELWHU_MW",29.51,25.43,46.47,74.19,34.42,32.97,34.81
+"SPP ISO South hub","Wholesale Electricity Price, SPP ISO South hub",1,1,"dollars per megawatthour","ELWHU_SP",27.86,22.55,93.88,68.98,34.74,41.04,49.83
+"SERC index, Into Southern","Wholesale Electricity Price, SERC index, Into Southern",1,1,"dollars per megawatthour","ELWHU_SE",30.25,22.62,42.39,70.39,32.26,29.78,31.99
+"FRCC index, Florida Reliability","Wholesale Electricity Price, FRCC index, Florida Reliability",1,1,"dollars per megawatthour","ELWHU_FL",30.10,23.48,37.92,67.77,33.05,31.58,34.98
+"Northwest index, Mid-Columbia","Wholesale Electricity Price, Northwest index, Mid-Columbia",1,1,"dollars per megawatthour","ELWHU_NW",36.12,25.46,59.53,97.11,81.61,61.08,55.46
+"Southwest index, Palo Verde","Wholesale Electricity Price, Southwest index, Palo Verde",1,1,"dollars per megawatthour","ELWHU_SW",35.26,39.64,55.44,89.47,59.46,31.45,39.65

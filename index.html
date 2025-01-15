@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Energy Markets</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Link to the font -->
+    <link
+      href="https://db.onlinewebfonts.com/c/cbbfee9126dc0abc730b9875dc28832f?family=Akkurat+Pro"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="article-title">
+      <h1>Clean energy in the US can’t keep up with growing power demands.</h1>
+    </div>
+    <div class="article">
+      <p>
+        In 2025, the US will experience the fastest expansion of the US electric
+        grid in generations. This is due to an increase in the energy usage of
+        data centers, and the production of Electric Vehicles. In 2023, data
+        centers accounted for 4.4% of the total US electricity usage and is
+        projected to account for as much as 12.0% by 2028. Electric Vehicles
+        account for % and are projected to %.
+      </p>
+      <div class="vis">
+        <p class="vis-title">Data Center Energy Usage</p>
+        <div id="data-centers-vis" class="vis"></div>
+        <p class="vis-below">
+          Data adapted from the U.S. Data Center Energy Usage Report (Berkeley
+          Lab 2024)
+        </p>
+      </div>
+
+      <p>At the same time, the supply of clean energy sources is increasing.</p>
+      <div class="vis">
+        <p class="vis-title">Clean Energy</p>
+        <div id="clean-vis" class="vis"></div>
+
+        <p class="vis-below">
+          Data Source: U.S. Energy Information Administration
+        </p>
+      </div>
+
+      <p>
+        But not enough to keep up with the pace of the increasing demand for
+        electricity.
+      </p>
+      <div class="vis">
+        <p class="vis-title">Clean Energy vs Electricty Demand</p>
+        <div id="clean-demand-vis" class="vis"></div>
+        <p class="vis-below">Data Source</p>
+      </div>
+
+      <p>
+        While the demand is increasing, it outpaces the deployment of clean
+        energy sources, leading to a net increase of global emissions. So the
+        supply of non-clean energy sources, such as coal, is projected to
+        increase in order to keep up with the demand. Leading to an overall
+        increase in (carbon) emissions.
+      </p>
+      <div class="vis">
+        <p class="vis-title">Energy Sources and Demand</p>
+        <div id="clean-non-demand-vis" class="vis"></div>
+        <div id="clean-demand-vis" class="vis"></div>
+        <p class="vis-below">Data Source</p>
+      </div>
+    </div>
+
+    <!-- Link to d3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
+    <!-- Link to the JavaScript file -->
+    <script src="main.js"></script>
+  </body>
+</html>

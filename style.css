@@ -1,0 +1,83 @@
+html {
+  font-family: "Akkurat Pro";
+  font-size: 20px;
+}
+
+/* General body styling */
+body {
+  margin: 0 auto;
+  max-width: 900px; /* Define overall margins for content */
+  padding: 10px; /* Add a small padding */
+  /* text-align: center Center-align all content */
+  font-family: Arial, sans-serif; /* Use a clean font */
+}
+
+.article-title {
+  margin-top: 100px;
+}
+
+.article {
+  margin-top: 150px;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Heading 1 styling */
+h1 {
+  margin: 100px 0 50px 0;
+  font-size: 2rem; /* 3 times the size of h3 */
+  line-height: 1.1; /* Double the font size */
+  text-align: center; /* Centered */
+}
+
+/* Heading 3 styling */
+h3 {
+  margin-top: 50px;
+  font-size: 1.2rem; /* Base font size */
+  line-height: 1.2; /* Double the font size */
+}
+
+/* Paragraph styling */
+p {
+  font-size: 1rem; /* Larger font size for paragraphs */
+  line-height: 1.5; /* Comfortable reading line height */
+}
+
+/* Caption styling*/
+.vis-below {
+  text-align: right;
+  padding: 0 10px;
+  font-size: 0.7rem; /* Slightly smaller font for captions */
+  color: gray; /* Lighter color for captions */
+}
+
+.vis-title {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 0;
+}
+
+/* Divs with class="vis" - exception to margin rule */
+.vis {
+  margin: 0; /* Remove margin for visualizations */
+  width: auto; /* Let the width be defined later */
+  max-width: none;
+}
+
+.tooltip-dot {
+  height: 9px;
+  width: 9px;
+  border: 0.5px solid #000;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.legend-dot {
+  margin: 10px;
+}
+
+.rect-hovered {
+  opacity: 0.6 !important;
+}

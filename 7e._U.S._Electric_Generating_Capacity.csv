@@ -1,0 +1,44 @@
+"7e. U.S. Electric Generating Capacity"
+"https://www.eia.gov/outlooks/steo/data/browser/#/?v=23&f=A&s=0&start=2010&end=2025&linechart=NGEPCGW_US&id=&maptype=0&ctype=linechart"
+"Fri Jan 10 2025 11:17:08 GMT-0500 (Eastern Standard Time)"
+"Source: U.S. Energy Information Administration"
+"remove","","map","linechart","units","source key","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"
+"7e. U.S. Electric Generating Capacity","7e. U.S. Electric Generating Capacity",0,0,,,,,,,,,,,,,,,,,,
+"Electric power sector (power plants larger than one megawatt)","Electric power sector (power plants larger than one megawatt)",0,0,,,,,,,,,,,,,,,,,,
+"Fossil fuel energy sources","Fossil fuel energy sources",0,0,,,,,,,,,,,,,,,,,,
+"Natural gas","Natural gas",1,1,"gigawatts at end of period","NGEPCGW_US",389.8,399.7,406.6,409.2,415.6,423.0,430.4,439.5,453.7,459.5,468.2,473.5,483.6,488.9,490.0,490.8
+"Coal","Coal",1,1,"gigawatts at end of period","CLEPCGW_US",312.9,313.7,305.9,299.9,295.9,277.0,264.3,254.4,240.7,226.8,214.0,208.3,187.9,177.0,173.8,162.7
+"Petroleum","Petroleum",1,1,"gigawatts at end of period","PAEPCGW_US",54.6,50.4,45.7,42.4,40.1,35.7,33.2,32.1,30.8,30.0,26.2,26.8,29.2,28.0,27.5,26.3
+"Other fossil gases","Other fossil gases",1,1,"gigawatts at end of period","OGEPCGW_US",0.2,0.0,0.1,0.1,0.1,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.4,0.3,0.3
+"Renewable energy sources","Renewable energy sources",0,0,,,,,,,,,,,,,,,,,,
+"Wind","Wind",1,1,"gigawatts at end of period","WNEPCGW_US",39.1,45.6,59.0,59.9,64.2,72.5,81.2,87.5,94.3,103.5,118.0,132.6,141.3,147.3,153.9,162.6
+"Solar photovoltaic","Solar photovoltaic",1,1,"gigawatts at end of period","SPEPCGWX_US",0.4,1.0,2.6,5.1,8.4,11.6,19.9,24.9,29.7,35.3,45.8,59.5,70.8,89.8,127.0,151.8
+"Solar thermal","Solar thermal",1,1,"gigawatts at end of period","STEPCGW_US",0.5,0.5,0.5,1.3,1.7,1.8,1.8,1.8,1.8,1.8,1.7,1.5,1.5,1.5,1.4,1.4
+"Geothermal","Geothermal",1,1,"gigawatts at end of period","GEEPCGW_US",2.4,2.4,2.6,2.6,2.5,2.5,2.5,2.5,2.4,2.5,2.5,2.5,2.6,2.7,2.7,2.7
+"Waste biomass","Waste biomass",1,1,"gigawatts at end of period","OWEPCGW_US",3.7,3.8,4.0,4.1,4.2,4.2,4.2,4.2,4.2,3.9,3.8,3.7,2.9,2.7,2.7,2.7
+"Wood biomass","Wood biomass",1,1,"gigawatts at end of period","WWEPCGW_US",2.1,2.0,2.3,2.9,2.9,3.1,3.2,3.0,2.9,2.7,2.7,2.4,2.4,2.3,2.3,2.3
+"Conventional hydroelectric","Conventional hydroelectric",1,1,"gigawatts at end of period","HVEPCGW_US",78.5,78.3,78.1,78.5,79.4,79.4,79.6,79.4,79.6,79.5,79.6,79.6,79.8,79.7,79.6,79.6
+"Pumped storage hydroelectric","Pumped storage hydroelectric",1,1,"gigawatts at end of period","HPEPCGW_US",22.2,22.3,22.4,22.4,22.5,22.6,22.8,22.8,22.8,22.8,23.0,23.0,23.0,23.1,23.2,23.2
+"Nuclear","Nuclear",1,1,"gigawatts at end of period","NUEPCGW_US",101.2,101.4,101.9,99.2,98.6,98.7,99.6,99.6,99.4,98.1,96.5,95.5,94.7,95.7,97.6,97.6
+"Battery storage","Battery storage",1,1,"gigawatts at end of period","BAEPCGW_US",0.0,0.1,0.2,0.2,0.2,0.3,0.6,0.7,0.9,1.0,1.5,4.7,9.0,16.0,30.5,43.5
+"Other nonrenewable sources","Other nonrenewable sources",1,1,"gigawatts at end of period","OTEPCGW_US",1.7,0.1,0.4,1.0,1.3,0.2,0.1,0.8,0.1,0.3,0.2,0.2,0.2,0.2,0.2,0.2
+"Industrial and commercial sectors (combined heat and power plants larger than one megawatt)","Industrial and commercial sectors (combined heat and power plants larger than one megawatt)",0,0,,,,,,,,,,,,,,,,,,
+"Fossil fuel energy sources","Fossil fuel energy sources",0,0,,,,,,,,,,,,,,,,,,
+"Natural gas","Natural gas",1,1,"gigawatts at end of period","NGCHCGW_US",15.3,15.5,15.8,16.2,16.6,16.4,16.5,16.5,16.6,17.1,17.6,18.4,18.8,18.6,18.5,18.5
+"Coal","Coal",1,1,"gigawatts at end of period","CLCHCGW_US",4.4,4.0,3.8,3.4,3.2,2.7,2.3,2.2,2.1,1.8,1.6,1.5,1.4,1.4,1.4,1.4
+"Petroleum","Petroleum",1,1,"gigawatts at end of period","PACHCGW_US",1.0,1.1,1.5,1.1,1.1,1.2,1.2,1.2,1.4,1.4,1.4,1.4,1.5,1.4,1.5,1.5
+"Other fossil gases","Other fossil gases",1,1,"gigawatts at end of period","OGCHCGW_US",2.0,1.9,1.9,2.0,1.8,2.1,2.1,2.0,2.2,2.1,1.9,1.5,1.4,1.5,1.5,1.5
+"Renewable energy sources","Renewable energy sources",0,0,,,,,,,,,,,,,,,,,,
+"Wood biomass","Wood biomass",1,1,"gigawatts at end of period","WWCHCGW_US",5.0,5.0,5.3,5.5,5.4,5.9,5.8,5.8,5.8,5.6,5.6,5.5,5.4,5.4,5.4,5.4
+"Waste biomass","Waste biomass",1,1,"gigawatts at end of period","OWCHCGW_US",0.7,0.8,0.8,0.9,0.9,0.9,0.9,0.9,0.9,0.8,0.8,0.8,1.4,1.4,1.3,1.3
+"Solar","Solar",1,1,"gigawatts at end of period","SOCHCGW_US",0.0,0.1,0.1,0.2,0.2,0.3,0.3,0.4,0.4,0.4,0.5,0.5,0.6,0.7,0.7,0.8
+"Wind","Wind",1,1,"gigawatts at end of period","WNCHCGW_US",0.0,0.0,0.0,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.3,0.1,0.1,0.1,0.1,0.1
+"Geothermal","Geothermal",1,1,"gigawatts at end of period","GECHCGW_US","--","--","--","--","--","--","--","--",0.0,0.0,0.0,0.1,0.1,0.1,0.1,0.1
+"Conventional hydroelectric","Conventional hydroelectric",1,1,"gigawatts at end of period","HVCHCGW_US",0.4,0.4,0.7,0.7,0.3,0.3,0.4,0.4,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
+"Battery storage","Battery storage",1,1,"gigawatts at end of period","BACHCGW_US","--","--","--","--","--",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.1,0.1,0.1,0.1
+"Other nonrenewable sources","Other nonrenewable sources",1,1,"gigawatts at end of period","OTCHCGW_US",1.1,1.2,1.2,1.2,1.3,1.2,1.3,1.4,1.3,1.3,1.3,1.3,1.2,1.3,1.3,1.3
+"Small-scale solar photovoltaic capacity (systems smaller than one megawatt)","Small-scale solar photovoltaic capacity (systems smaller than one megawatt)",0,0,,,,,,,,,,,,,,,,,,
+"All sectors total","All sectors total",1,1,"gigawatts at end of period","SODTG_US","--","--","--","--",7.3,9.8,12.8,16.1,19.5,23.2,27.6,33.1,39.8,47.8,53.5,60.6
+"Residential sector","Residential sector",1,1,"gigawatts at end of period","SODRG_US","--","--","--","--",3.3,5.2,7.5,9.6,11.7,14.2,17.2,21.1,26.3,32.6,36.4,41.3
+"Commercial sector","Commercial sector",1,1,"gigawatts at end of period","SODCG_US","--","--","--","--",3.3,3.7,4.0,5.2,6.3,7.2,8.4,9.8,11.2,12.6,14.4,16.3
+"Industrial sector","Industrial sector",1,1,"gigawatts at end of period","SODIG_US","--","--","--","--",0.7,0.9,1.2,1.4,1.6,1.8,2.0,2.2,2.3,2.6,2.8,3.0
