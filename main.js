@@ -24,111 +24,6 @@ const tooltip = d3
   .style("transition", "opacity 0.1s ease 0.3s"); // Smooth transition for opacity change;
 // Initially hidden
 
-function createAxes(svg, xScale, yScale, width, height, options = {}) {
-  // Default configuration
-  const config = {
-    xLabel: options.xLabel || "",
-    yLabel: options.yLabel || "",
-    xTicks: options.xTicks || 10,
-    yTicks: options.yTicks || 10,
-    xTickSize: options.xTickSize || 7,
-    yTickSize: options.yTickSize || 7,
-    margin: options.margin || margin,
-    fontFamily: options.fontFamily || "Open Sans",
-    xHidden: options.xHidden || false,
-    yHidden: options.yHidden || false,
-    yGrid: options.yGrid || false,
-    yTickValues: options.yTickValues || 0,
-    yTickUnit: options.yTickUnit || 0,
-  };
-
-  // Create X-axis
-  const xAxis = d3
-    .axisBottom(xScale)
-    .tickSize(config.xTickSize)
-    .ticks(config.xTicks)
-    .tickFormat(d3.format("d"));
-
-  const xAxisGroup = svg
-    .append("g")
-    .attr("transform", `translate(0, ${height})`) // Move to the bottom of the chart area
-    .call(xAxis);
-
-  // Apply font style to all tick text
-  xAxisGroup
-    .selectAll("text")
-    .style("font-family", config.fontFamily)
-    .attr("dy", "1em")
-    .style("font-size", "0.7rem");
-
-  // Conditionally hide X-axis domain line
-  if (config.xHidden) {
-    xAxisGroup.select(".domain").style("stroke-width", "0");
-  }
-
-  // Add X-axis label
-  svg
-    .append("text")
-    .attr("x", width / 2)
-    .attr("y", height + 35)
-    .attr("fill", "black")
-    .style("text-anchor", "middle")
-    .style("font-family", config.fontFamily) // Apply font style to axis label
-    .text(config.xLabel);
-
-  // Create Y-axis
-  const yAxis = d3
-    .axisLeft(yScale)
-    .ticks(config.yTicks)
-    .tickSize(config.yTickSize);
-
-  if (config.yTickValues) {
-    yAxis.tickValues(config.yTickValues);
-  }
-
-  if (config.yTickUnit) {
-    yAxis.tickFormat((d) => d + config.yTickUnit);
-  }
-
-  const yAxisGroup = svg.append("g").call(yAxis);
-  // Apply font style to all tick text
-  yAxisGroup
-    .selectAll("text")
-    .style("font-family", config.fontFamily)
-    .style("fill", "#aaaaaa")
-    .style("font-size", "0.7rem");
-
-  // Conditionally hide Y-axis domain line
-  if (config.yHidden) {
-    yAxisGroup.select(".domain").style("stroke-width", "0");
-  }
-
-  // Conditionally add grid
-  if (config.yGrid) {
-    svg
-      .selectAll(".tick")
-      .append("line")
-      .attr("x1", 0) // Starting X position (at the Y-axis)
-      .attr("x2", width) // Ending X position (extend across the full width)
-      .attr("y", (d) => yScale(d)) // Y position for each tick (using the scale)
-      // .attr("y2", (d) => yScale(d)) // Y position for each tick (same as y1)
-      .attr("stroke", "#ddd") // Grid line color (light gray)
-      .attr("stroke-width", 0.8); // Line width
-    // .attr("stroke-dasharray", "4,4"); // Optional dashed lines
-  }
-
-  // Add Y-axis label
-  svg
-    .append("text")
-    .attr("x", -height / 2)
-    .attr("y", -config.margin.left + 30)
-    .attr("fill", "black")
-    .style("text-anchor", "middle")
-    .style("font-family", config.fontFamily) // Apply font style to axis label
-    .attr("transform", "rotate(-90)")
-    .text(config.yLabel);
-}
-
 // Function to handle hover and leave events for categories dynamically
 function categoriesHover(categoryNames, baseClassName) {
   categoryNames.forEach((categoryName, index) => {
@@ -431,7 +326,6 @@ d3.csv("clean-energy-net-change.csv").then(function (dataset) {
   stackedData.forEach((stackArray, index) => {
     // Each element in stackArray is [start, end]
     stackArray.forEach((d, i) => {
-      // console.log(`Index: ${index}, Element: ${i}, Data:`, d);
       d.key = index;
     });
   });
@@ -440,9 +334,9 @@ d3.csv("clean-energy-net-change.csv").then(function (dataset) {
   const xScale = d3.scaleLinear().domain([2011, 2025]).range([0, width]);
   const yScale = d3.scaleLinear().domain([-4, 40]).range([height, 20]);
 
-  const visID = "#clean-vis";
+  const visID = "clean-vis";
   var svg = d3
-    .select(visID)
+    .select(`#` + visID)
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
@@ -450,7 +344,7 @@ d3.csv("clean-energy-net-change.csv").then(function (dataset) {
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  const base = "cat";
+  const base = "cats";
   makeLegend(visID, keys, keysDescription, categoriesColors, base);
 
   // Call the reusable function
@@ -591,11 +485,6 @@ d3.csv("energy-usage.csv").then(function (dataset) {
     .offset(d3.stackOffsetNone);
   const stackedData = stack(set);
 
-  console.log("filtered: ", stackedData);
-  // var mygroup = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; // list of group names
-  // var stackGen = d3.stack().keys(mygroups);
-  // var stack = stackGen(ceData);
-
   // Define scales
   const xScale = d3
     .scaleLinear()
@@ -604,23 +493,23 @@ d3.csv("energy-usage.csv").then(function (dataset) {
   const yScale = d3.scaleLinear().domain([0, 100]).range([height, 0]);
 
   const base = "cat";
-  const visID = "#clean-demand-vis";
+  const visID = "clean-demand-vis";
   var svg = d3
-    .select(visID)
+    .select(`#` + visID)
     .append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom);
+    .attr("height", height + margin.top + margin.bottom + 10);
   var vis = svg
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
   // Call the reusable function
   createAxes(vis, xScale, yScale, width, height, {
-    xTicks: 9,
+    // xTicks: 9,
     yTicks: 4,
     margin,
     yHidden: true,
-    xTickSize: "0",
+    // xTickSize: "0",
     yTickSize: "0",
     yGrid: true,
     // xTickValues: [2013, 2015, 2017, 2019, 2021, 2023, 2025],
@@ -630,8 +519,9 @@ d3.csv("energy-usage.csv").then(function (dataset) {
   makeLegend(visID, typeKeys, "", categoriesColors, base);
   categoriesHover(typeKeys, base);
 
-  vis
+  var hoverArea = vis
     .append("g")
+    .attr("class", visID + "-hover-area")
     .selectAll("g")
     .data(stackedData)
     .join("path")
@@ -662,45 +552,22 @@ d3.csv("energy-usage.csv").then(function (dataset) {
     })
     .attr("width", 100)
     .attr("height", (d) => yScale(d[0]) - yScale(d[1]))
-    //tooltip
-    //
-
-    .on("mousemove", function (event, d) {
-      const index = mapMouseToIndex(vis, event, yearKeys, xScale);
-      d3.select("#tooltip")
-        .style("opacity", 1)
-        .style("transition", "opacity 0.1s ease")
-        .html(
-          `
-  <text style="font-size: 0.7rem;">${d.year}</text>
-  <text style="font-size: 0.7rem; color: #f357d1;  margin-top: 4px;">
-    ${d.type}
-  </text>
-  <div style="font-size: 14px; font-weight: bold; margin-top: 2px; font-size: 0.8rem">
-    ${d.per}% <text style="font-weight: normal;font-size: 0.7rem"> of US Total </text>
-  </div>
-`
-        )
-        .style("left", event.pageX + 14 + "px")
-        .style("top", event.pageY - 20 + "px");
-    })
+    .on("mousemove", (event, d) =>
+      createTooltip(event, d, typeKeys, hoverArea, categoriesColors, visID, {
+        calcX: true, // Ensure this is true as expected
+        xScale: xScale,
+        showAll: true,
+        xIndex: yearKeys,
+        unitString: "gW",
+      })
+    )
     .on("mouseout", function () {
-      d3.select("#tooltip")
-        .style("opacity", 0)
-        .style("transition", "opacity 0.1s ease 0.3s");
+      removeTooltip();
     });
+  //tooltip
+  //
 });
 
-function getMouseCoordinatesRelativelySvgElement(SVGElement, MoveMouseEvent) {
-  // get a sizes and position of svg element, relative browser viewport (page piece, showed on a screen, which we can see)
-  //does not account for viewbox
-  const svg = SVGElement.node();
-  let svg_element_position = svg.getBoundingClientRect();
-  return {
-    x: Math.round(MoveMouseEvent.clientX - svg_element_position.x),
-    y: Math.round(MoveMouseEvent.clientY - svg_element_position.y),
-  };
-}
 function roundYear(value, yearRange) {
   const closestYear = yearRange.reduce((prev, curr) => {
     return Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev;
@@ -709,21 +576,30 @@ function roundYear(value, yearRange) {
   // Step 2: Get the index of the closest value
   const closestIndex = yearRange.indexOf(closestYear);
 
-  console.log("Closest Year:", closestYear);
-  console.log("Index:", closestIndex);
-
   return closestIndex;
 }
 
 function mapMouseToIndex(SVGElement, MoveMouseEvent, yearKeys, xScale) {
-  let coords = getMouseCoordinatesRelativelySvgElement(
-    SVGElement,
-    MoveMouseEvent
-  );
+  const svg = SVGElement.node();
+  let svg_element_position = svg.getBoundingClientRect();
+
+  coords = {
+    x: Math.round(MoveMouseEvent.clientX - svg_element_position.x),
+    y: Math.round(MoveMouseEvent.clientY - svg_element_position.y),
+  };
+
   //calculate value
   const xValue = xScale.invert(coords.x);
+
   const yearIndex = roundYear(xValue, yearKeys);
-  return yearIndex;
+  const xPos = xScale(yearKeys[yearIndex]);
+
+  // const xPos = svg_element_position.x + xScale(yearKeys[yearIndex]) - 10;
+  const yPos = svg_element_position.y;
+  //calculate edge of svg
+  console.log(xPos);
+
+  return { yearIndex: yearIndex, xPos: xPos, yPos: yPos };
 }
 
 function makeLegend(
@@ -735,9 +611,10 @@ function makeLegend(
 ) {
   //attach legend
   d3
-    .select(visID) // Adjust to your container element
+    .select(`#` + visID) // Adjust to your container element
     .append("div")
-    .attr("class", "legend-container")
+    .attr("class", `legend-container${visID}`)
+    // .attr("class", "legend-container")
     .style("font-family", "Arial, sans-serif")
     .style("text-align", "left")
     .style("line-height", "1.4")
@@ -745,7 +622,6 @@ function makeLegend(
     .html(`<div style="width: 90%; height: 1px; background-color: #ddd; margin: auto;"></div>
   <div style="display: flex; padding: 0 30px;">
     <div style="display: flex; gap-right: 26px; align-items: center; margin-right: auto; display: flex; flex-wrap: wrap;">`);
-  console.log(categories);
 
   categories.forEach((category, index) => {
     const catDes = categoriesDescription[index]
@@ -753,7 +629,8 @@ function makeLegend(
       : "";
 
     d3
-      .select(".legend-container >div >div")
+      .select(`.legend-container${visID} >div >div`)
+      // .select(".legend-container >div >div")
       .append("div")
       .attr("id", baseClassName + `-${index}`)
       .style("display", "flex")
@@ -763,10 +640,215 @@ function makeLegend(
       <span style="max-width:450px; font-size: 0.8rem;"><tspan style="font-weight: bold;">${category}</tspan> ${catDes}</span>
     `);
   });
-  d3.select(".legend-container")
+  d3.select(`.legend-container${visID}`)
+    // .select("legend-container")
     .append("div")
     .style("display", "flex")
     .style("justify-content", "center")
     .style("margin-top", "20px")
     .html("</div>");
+}
+
+function createTooltip(event, d, categories, vis, colors, visID, options = {}) {
+  // Default configuration
+  const config = {
+    calcX: options.calcX || false,
+    xScale: options.xScale || "",
+    showAll: options.showAll || false,
+    xIndex: options.xIndex || "",
+    unitString: options.unitString || "m",
+  };
+
+  //show all
+  if (config.showAll) {
+    //calculate the xIndex
+    var index = 0;
+    var xPos = 0;
+    if (config.calcX) {
+      index = mapMouseToIndex(
+        vis,
+        event,
+        config.xIndex,
+        config.xScale
+      ).yearIndex;
+      xPos = mapMouseToIndex(vis, event, config.xIndex, config.xScale).xPos;
+    }
+
+    d3.select("#tooltip")
+      .style("opacity", 1)
+      .style("transition", "opacity 0.1s ease")
+      .html(
+        `
+        <text style="font-size: 0.6rem;">${d[index].data.Year}</text>
+        `
+      )
+      .style("left", event.pageX + 14 + "px")
+      .style("top", event.pageY - 20 + "px");
+
+    categories.forEach((category, i) => {
+      // .style("margin-top", "5px")
+      d3
+        .select("#tooltip")
+        // .select(".legend-container >div >div")
+        .append("div")
+        .style("display", "flex")
+        .style("align-items", "center").html(`
+      <span class="tooltip-dot legend-dot" style="background-color:${colors[i]};"></span>
+      <span style="max-width:450px; font-size: 0.5rem;">${d[index].data[category]} ${config.unitString} <tspan style="font-weight: bold;">${category}</tspan> </span>
+`);
+    });
+
+    d3.select("#tooltip-line")
+      .style("opacity", 0)
+      .style("transition", "opacity 0.1s ease")
+      .remove();
+    // vis.append("line");
+    d3.select(`.` + visID + `-hover-area`)
+      .append("line")
+      .attr("id", "tooltip-line")
+      .attr("x1", xPos + 0.5)
+      .attr("x2", xPos + 0.5)
+      // Starting X position (at the Y-axis)
+      .attr("y1", 0) // Y position for each tick (using the scale)
+      .attr("y2", height)
+      // .attr("y2", (d) => yScale(d)) // Y position for each tick (same as y1)
+      .attr("stroke", "#000") // Grid line color (light gray)
+      .attr("stroke-width", 1); // Line width
+  } //show just hovered
+  else {
+    d3.select("#tooltip")
+      .style("opacity", 1)
+      .style("transition", "opacity 0.1s ease")
+      .html(
+        `
+  <text style="font-size: 0.7rem;">${d.year}</text>
+  <text style="font-size: 0.7rem; color: #f357d1;  margin-top: 4px;">
+    ${d.type}
+  </text>
+  <div style="font-size: 14px; font-weight: bold; margin-top: 2px; font-size: 0.8rem">
+    ${d.per}% <text style="font-weight: normal;font-size: 0.7rem"> of US Total </text>
+  </div>
+`
+      )
+      .style("left", event.pageX + 14 + "px")
+      .style("top", event.pageY - 20 + "px");
+  }
+}
+
+function removeTooltip() {
+  d3.select("#tooltip")
+    .style("opacity", 0)
+    .style("transition", "opacity 0.1s ease 0.3s");
+
+  //this not working
+  console.log("p");
+
+  d3.select("#tooltip-line")
+    .style("opacity", 0)
+    .style("transition", "opacity 0.1s ease 0.3s")
+    .remove();
+}
+function createAxes(svg, xScale, yScale, width, height, options = {}) {
+  // Default configuration
+  const config = {
+    xLabel: options.xLabel || "",
+    yLabel: options.yLabel || "",
+    xTicks: options.xTicks || 10,
+    yTicks: options.yTicks || 10,
+    xTickSize: options.xTickSize || 7,
+    yTickSize: options.yTickSize || 7,
+    margin: options.margin || margin,
+    fontFamily: options.fontFamily || "Open Sans",
+    xHidden: options.xHidden || false,
+    yHidden: options.yHidden || false,
+    yGrid: options.yGrid || false,
+    yTickValues: options.yTickValues || 0,
+    yTickUnit: options.yTickUnit || 0,
+  };
+
+  // Create X-axis
+  const xAxis = d3
+    .axisBottom(xScale)
+    .tickSize(config.xTickSize)
+    .ticks(config.xTicks)
+    .tickFormat(d3.format("d"));
+
+  const xAxisGroup = svg
+    .append("g")
+    .attr("transform", `translate(0, ${height})`) // Move to the bottom of the chart area
+    .call(xAxis);
+
+  // Apply font style to all tick text
+  xAxisGroup
+    .selectAll("text")
+    .style("font-family", config.fontFamily)
+    .attr("dy", "1em")
+    .style("font-size", "0.7rem");
+
+  // Conditionally hide X-axis domain line
+  if (config.xHidden) {
+    xAxisGroup.select(".domain").style("stroke-width", "0");
+  }
+
+  // Add X-axis label
+  svg
+    .append("text")
+    .attr("x", width / 2)
+    .attr("y", height + 35)
+    .attr("fill", "black")
+    .style("text-anchor", "middle")
+    .style("font-family", config.fontFamily) // Apply font style to axis label
+    .text(config.xLabel);
+
+  // Create Y-axis
+  const yAxis = d3
+    .axisLeft(yScale)
+    .ticks(config.yTicks)
+    .tickSize(config.yTickSize);
+
+  if (config.yTickValues) {
+    yAxis.tickValues(config.yTickValues);
+  }
+
+  if (config.yTickUnit) {
+    yAxis.tickFormat((d) => d + config.yTickUnit);
+  }
+
+  const yAxisGroup = svg.append("g").call(yAxis);
+  // Apply font style to all tick text
+  yAxisGroup
+    .selectAll("text")
+    .style("font-family", config.fontFamily)
+    .style("fill", "#aaaaaa")
+    .style("font-size", "0.7rem");
+
+  // Conditionally hide Y-axis domain line
+  if (config.yHidden) {
+    yAxisGroup.select(".domain").style("stroke-width", "0");
+  }
+
+  // Conditionally add grid
+  if (config.yGrid) {
+    svg
+      .selectAll(".tick")
+      .append("line")
+      .attr("x1", 0) // Starting X position (at the Y-axis)
+      .attr("x2", width) // Ending X position (extend across the full width)
+      .attr("y", (d) => yScale(d)) // Y position for each tick (using the scale)
+      // .attr("y2", (d) => yScale(d)) // Y position for each tick (same as y1)
+      .attr("stroke", "#ddd") // Grid line color (light gray)
+      .attr("stroke-width", 0.8); // Line width
+    // .attr("stroke-dasharray", "4,4"); // Optional dashed lines
+  }
+
+  // Add Y-axis label
+  svg
+    .append("text")
+    .attr("x", -height / 2)
+    .attr("y", -config.margin.left + 30)
+    .attr("fill", "black")
+    .style("text-anchor", "middle")
+    .style("font-family", config.fontFamily) // Apply font style to axis label
+    .attr("transform", "rotate(-90)")
+    .text(config.yLabel);
 }
