@@ -6,25 +6,27 @@ html {
 /* General body styling */
 body {
   margin: 0 auto;
-  max-width: 900px; /* Define overall margins for content */
+  max-width: 1200px; /* Define overall margins for content */
   padding: 10px; /* Add a small padding */
   /* text-align: center Center-align all content */
   font-family: Arial, sans-serif; /* Use a clean font */
 }
 
 .article-title {
+  max-width: 800px;
   margin-top: 100px;
+  margin: auto;
 }
 
 .article {
-  margin-top: 150px;
-  max-width: 800px;
-  margin: auto;
+  margin-top: 40px;
+  /* max-width: 800px; */
+  /* margin: auto; */
 }
 
 /* Heading 1 styling */
 h1 {
-  margin: 100px 0 50px 0;
+  margin: 100px 0 20px 0;
   font-size: 2rem; /* 3 times the size of h3 */
   line-height: 1.1; /* Double the font size */
   text-align: center; /* Centered */
@@ -39,10 +41,24 @@ h3 {
 
 /* Paragraph styling */
 p {
-  font-size: 1rem; /* Larger font size for paragraphs */
+  font-size: 0.8em; /* Larger font size for paragraphs */
   line-height: 1.5; /* Comfortable reading line height */
+  text-align: justify;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+.modular-right {
+  max-width: 400px;
+  min-width: 300px;
+  border: 2px solid #ddd;
+  /* background-color: #eee; */
+  border-radius: 15px;
+  padding: 0px 30px;
+}
 /* Caption styling*/
 .vis-below {
   text-align: right;
@@ -80,4 +96,55 @@ p {
 
 .rect-hovered {
   opacity: 0.6 !important;
+}
+
+.button {
+  display: inline-block; /* Makes it behave like a button */
+  padding: 6px 14px; /* Adds some space inside the button */
+  border: 1.5px solid #ddd; /* Black outline */
+  border-radius: 20px; /* Optional: Makes the corners rounded */
+  background-color: white; /* Button background */
+  color: black; /* Text color */
+  font-size: 0.8rem /* Text size */;
+  text-align: center; /* Centers the text */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  font-weight: bold;
+}
+
+#button.nr {
+  display: inline-block; /* Makes it behave like a button */
+  padding: 6px 14px; /* Adds some space inside the button */
+  border: 1.5px solid #ddd; /* Black outline */
+  border-radius: 20px; /* Optional: Makes the corners rounded */
+  background-color: white; /* Button background */
+  color: black; /* Text color */
+  font-size: 0.8rem /* Text size */;
+  text-align: center; /* Centers the text */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  font-weight: bold;
+}
+
+/* Add hover effect */
+#button-nr:hover {
+  background-color: #ddd;
+}
+
+#button-nr.clicked {
+  background-color: #ddd;
+}
+
+#button-nr.clicked:hover {
+  background-color: white;
+}
+
+.byline {
+  text-align: center;
+  /* font-weight: 600; */
+  color: #b0b0b0;
+  font-size: 0.9em;
+  margin: auto;
+  max-width: 800px;
+  padding-bottom: 20px;
 }

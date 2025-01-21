@@ -76,6 +76,8 @@ const categoriesColors = [
   "#F37633",
   "#AF85F8",
   "#A969B6",
+  //gray
+  "#bbb",
   //repeat
   "#F37633",
   "#AF85F8",
@@ -431,42 +433,26 @@ d3.csv("clean-energy-net-change.csv").then(function (dataset) {
 });
 
 //clean demand vis
-d3.csv("energy-usage.csv").then(function (dataset) {
-  // let ceData = dataset.map((d) => ({
-  //   year: +d.Year,
-  //   biodiesel: +d["Biodiesel, Renewable Diesel, and Other"],
-  //   biofuelLosses: +d["Biofuel Losses and Co-Products"],
-  //   ethanol: +d.Ethanol,
-  //   geothermal: +d.Geothermal,
-  //   hydroelectric: +d["Hydroelectric Power"],
-  //   solar: +d.Solar,
-  //   waste: +d["Waste Biomass"],
-  //   wood: +d["Wood Biomass"],
-  //   wind: +d.Wind,
-  //   total: +d.Total - +d.Renewables,
-  //   renewables: +d.Renewables,
-  // }));
 
+d3.csv("energy-usage.csv").then(function (dataset) {
+  const buttonNR = document.getElementById("button-nr");
+  buttonNR.classList.toggle("hide");
+
+  buttonNR.addEventListener("click", () => {
+    // Toggle the "show" class
+    buttonNR.classList.toggle("hide");
+    updateCleanDemandVis(dataset, buttonNR);
+  });
+
+  updateCleanDemandVis(dataset, buttonNR);
+});
+
+function updateCleanDemandVis(dataset, buttonNR) {
   var set = dataset.filter((d) => d.Year > 2012);
 
   set.forEach((item) => {
     delete item.Total;
   });
-
-  const names = set.map(({ Year, ...rest }) => rest);
-  // Stack the data: each group will be represented on top of each other
-  var mygroups = [
-    "biodiesel",
-    "biofuel",
-    "ethanol",
-    "geothermal",
-    "hydroelectric",
-    "solar",
-    "waste",
-    "wood",
-    "wind",
-    // "total",
-  ]; // list of group names
 
   //exclude year
   const filteredEnergyData = dataset.columns.slice(1);
@@ -475,7 +461,27 @@ d3.csv("energy-usage.csv").then(function (dataset) {
   //put not renewables at the bottom
 
   typeKeys.push(typeKeys.splice(0, 1)[0]);
+
+  console.log(typeKeys);
+
+  var xScale;
+  var yScale;
+  // Change the text to "hide" or "show" depending on the current state
+  if (buttonNR.classList.contains("hide")) {
+    buttonNR.textContent = "Hide Non-Renewables";
+    typeKeys = typeKeys.filter((item) => item !== "Non-Renewables");
+    yScale = d3.scaleLinear().domain([0, 10]).range([height, 0]);
+  } else {
+    buttonNR.textContent = "Show Non-Renewables";
+
+    yScale = d3.scaleLinear().domain([0, 100]).range([height, 0]);
+  }
+
   const yearKeys = set.map((d) => d.Year);
+  xScale = d3
+    .scaleLinear()
+    .domain([2013, 2025])
+    .range([0 + 10, width - 20]);
 
   // stack the data
   const stack = d3
@@ -485,18 +491,13 @@ d3.csv("energy-usage.csv").then(function (dataset) {
     .offset(d3.stackOffsetNone);
   const stackedData = stack(set);
 
-  // Define scales
-  const xScale = d3
-    .scaleLinear()
-    .domain([2013, 2025])
-    .range([0 + 10, width - 20]);
-  const yScale = d3.scaleLinear().domain([0, 100]).range([height, 0]);
-
   const base = "cat";
   const visID = "clean-demand-vis";
+  d3.select(`.` + visID + `-block`).remove();
   var svg = d3
     .select(`#` + visID)
     .append("svg")
+    .attr("class", visID + `-block`)
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom + 10);
   var vis = svg
@@ -553,20 +554,29 @@ d3.csv("energy-usage.csv").then(function (dataset) {
     .attr("width", 100)
     .attr("height", (d) => yScale(d[0]) - yScale(d[1]))
     .on("mousemove", (event, d) =>
-      createTooltip(event, d, typeKeys, hoverArea, categoriesColors, visID, {
-        calcX: true, // Ensure this is true as expected
-        xScale: xScale,
-        showAll: true,
-        xIndex: yearKeys,
-        unitString: "gW",
-      })
+      createTooltip(
+        event,
+        d,
+        typeKeys,
+        hoverArea,
+        categoriesColors,
+        visID,
+        stackedData,
+        {
+          calcX: true, // Ensure this is true as expected
+          xScale: xScale,
+          yScale: yScale,
+          showAll: true,
+          xIndex: yearKeys,
+          unitString: "gW",
+        }
+      )
     )
     .on("mouseout", function () {
       removeTooltip();
     });
   //tooltip
-  //
-});
+}
 
 function roundYear(value, yearRange) {
   const closestYear = yearRange.reduce((prev, curr) => {
@@ -597,7 +607,6 @@ function mapMouseToIndex(SVGElement, MoveMouseEvent, yearKeys, xScale) {
   // const xPos = svg_element_position.x + xScale(yearKeys[yearIndex]) - 10;
   const yPos = svg_element_position.y;
   //calculate edge of svg
-  console.log(xPos);
 
   return { yearIndex: yearIndex, xPos: xPos, yPos: yPos };
 }
@@ -609,6 +618,8 @@ function makeLegend(
   colors,
   baseClassName
 ) {
+  d3.select(`.legend-container${visID}`).remove();
+
   //attach legend
   d3
     .select(`#` + visID) // Adjust to your container element
@@ -649,14 +660,25 @@ function makeLegend(
     .html("</div>");
 }
 
-function createTooltip(event, d, categories, vis, colors, visID, options = {}) {
+function createTooltip(
+  event,
+  d,
+  categories,
+  vis,
+  colors,
+  visID,
+  dataset,
+  options = {}
+) {
   // Default configuration
   const config = {
     calcX: options.calcX || false,
     xScale: options.xScale || "",
+    yScale: options.yScale || "",
     showAll: options.showAll || false,
     xIndex: options.xIndex || "",
     unitString: options.unitString || "m",
+    line: options.line || false,
   };
 
   //show all
@@ -679,11 +701,16 @@ function createTooltip(event, d, categories, vis, colors, visID, options = {}) {
       .style("transition", "opacity 0.1s ease")
       .html(
         `
-        <text style="font-size: 0.6rem;">${d[index].data.Year}</text>
+        <text style="font-size: 0.7rem; font-weight: bold; margin-left: 10px">${d[index].data.Year}</text>
         `
       )
       .style("left", event.pageX + 14 + "px")
       .style("top", event.pageY - 20 + "px");
+
+    d3.selectAll(`.tooltip-hover-dot`)
+      .style("opacity", 0)
+      .style("transition", "opacity 0.1s ease")
+      .remove();
 
     categories.forEach((category, i) => {
       // .style("margin-top", "5px")
@@ -692,30 +719,44 @@ function createTooltip(event, d, categories, vis, colors, visID, options = {}) {
         // .select(".legend-container >div >div")
         .append("div")
         .style("display", "flex")
+        .style("height", "20px")
         .style("align-items", "center").html(`
       <span class="tooltip-dot legend-dot" style="background-color:${colors[i]};"></span>
-      <span style="max-width:450px; font-size: 0.5rem;">${d[index].data[category]} ${config.unitString} <tspan style="font-weight: bold;">${category}</tspan> </span>
+      <span style="max-width:450px; font-size: 0.5rem;">${category}: <tspan style="font-weight: bold;">${d[index].data[category]} ${config.unitString} </tspan> </span>
 `);
+
+      const dotContainer = d3.select(`.${visID}-hover-area`);
+      dotContainer
+        .append("circle")
+        .attr("class", `tooltip-hover-dot`)
+        .attr("cx", xPos + 0.5) // Position dots based on `year`
+        .attr("cy", config.yScale(dataset[i][index][1])) // Position dots based on `val` from `low`
+        .attr("r", 9) // Dot radius
+        .attr("fill", colors[i]) // Dot color for `low`
+        .attr("opacity", "0.5")
+        .attr("stroke-width", 0.5);
+      dotContainer
+        .append("circle")
+        .attr("class", `tooltip-hover-dot`)
+        .attr("cx", xPos + 0.5) // Position dots based on `year`
+        .attr("cy", config.yScale(dataset[i][index][1])) // Position dots based on `val` from `low`
+        .attr("r", 9) // Dot radius
+        .attr("fill", "#fff") // Dot color for `low`
+        .attr("opacity", "0.3")
+        .attr("stroke-width", 0.5);
+      dotContainer
+        .append("circle")
+        .attr("class", `tooltip-hover-dot`)
+        .attr("cx", xPos + 0.5) // Position dots based on `year`
+        .attr("cy", config.yScale(dataset[i][index][1])) // Position dots based on `val` from `low`
+        .attr("r", 6) // Dot radius
+        .attr("fill", colors[i]) // Dot color for `low`
+        .attr("stroke", "#000") //
+        .attr("stroke-width", 0.5);
     });
 
-    d3.select("#tooltip-line")
-      .style("opacity", 0)
-      .style("transition", "opacity 0.1s ease")
-      .remove();
-    // vis.append("line");
-    d3.select(`.` + visID + `-hover-area`)
-      .append("line")
-      .attr("id", "tooltip-line")
-      .attr("x1", xPos + 0.5)
-      .attr("x2", xPos + 0.5)
-      // Starting X position (at the Y-axis)
-      .attr("y1", 0) // Y position for each tick (using the scale)
-      .attr("y2", height)
-      // .attr("y2", (d) => yScale(d)) // Y position for each tick (same as y1)
-      .attr("stroke", "#000") // Grid line color (light gray)
-      .attr("stroke-width", 1); // Line width
-  } //show just hovered
-  else {
+    //yScale(d[0])
+  } else {
     d3.select("#tooltip")
       .style("opacity", 1)
       .style("transition", "opacity 0.1s ease")
@@ -733,19 +774,40 @@ function createTooltip(event, d, categories, vis, colors, visID, options = {}) {
       .style("left", event.pageX + 14 + "px")
       .style("top", event.pageY - 20 + "px");
   }
+
+  if (config.line) {
+    d3.select("#tooltip-line")
+      .style("opacity", 0)
+      .style("transition", "opacity 0.1s ease")
+      .remove();
+    // vis.append("line");
+    d3.select(`.` + visID + `-hover-area`)
+      .append("line")
+      .attr("id", "tooltip-line")
+      .attr("x1", xPos + 0.5)
+      .attr("x2", xPos + 0.5)
+      // Starting X position (at the Y-axis)
+      .attr("y1", 0) // Y position for each tick (using the scale)
+      .attr("y2", height)
+      // .attr("y2", (d) => yScale(d)) // Y position for each tick (same as y1)
+      .attr("stroke", "#000") // Grid line color (light gray)
+      .attr("stroke-width", 1); // Line width
+  }
 }
 
 function removeTooltip() {
   d3.select("#tooltip")
     .style("opacity", 0)
-    .style("transition", "opacity 0.1s ease 0.3s");
+    .style("transition", "opacity 0.1s ease 0.2s");
 
-  //this not working
-  console.log("p");
+  d3.selectAll(`.tooltip-hover-dot`)
+    .style("opacity", 0)
+    .style("transition", "opacity 0.1s ease")
+    .remove();
 
   d3.select("#tooltip-line")
     .style("opacity", 0)
-    .style("transition", "opacity 0.1s ease 0.3s")
+    .style("transition", "opacity 0.1s ease 0.2s")
     .remove();
 }
 function createAxes(svg, xScale, yScale, width, height, options = {}) {

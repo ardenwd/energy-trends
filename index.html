@@ -20,57 +20,67 @@
   <body>
     <div class="article-title">
       <h1>Clean energy in the US can’t keep up with growing power demands.</h1>
+      <p class="byline">Graphics by Arden Davis. Last Updated 1.21.2025</p>
     </div>
     <div class="article">
-      <p>
-        In 2025, the US will experience the fastest expansion of the US electric
-        grid in generations. This is due to an increase in the energy usage of
-        data centers, and the production of Electric Vehicles. In 2023, data
-        centers accounted for 4.4% of the total US electricity usage and is
-        projected to account for as much as 12.0% by 2028. Electric Vehicles
-        account for % and are projected to %.
-      </p>
-      <div class="vis">
-        <p class="vis-title">Data Center Energy Usage</p>
-        <div id="data-centers-vis" class="vis"></div>
-        <p class="vis-below">
-          Data adapted from the U.S. Data Center Energy Usage Report (Berkeley
-          Lab 2024)
-        </p>
+      <div class="container">
+        <div class="modular-left">
+          <div class="vis">
+            <p class="vis-title">Data Center Energy Usage</p>
+            <div id="data-centers-vis" class="vis"></div>
+            <p class="vis-below">
+              Data Source: The U.S. Data Center Energy Usage Report (Berkeley
+              Lab 2024)
+            </p>
+          </div>
+        </div>
+        <div class="modular-right">
+          <p>
+            In 2025, the US will experience the fastest expansion of the US
+            electric grid in generations. One driving cause is the increase in
+            the energy usage of data centers. In 2023, data centers accounted
+            for 4.4% of the total US electricity usage and is projected to
+            account for as much as 12.0% by 2028.
+          </p>
+        </div>
       </div>
 
-      <p>At the same time, the supply of clean energy sources is increasing.</p>
-      <div class="vis">
-        <p class="vis-title">Clean Energy</p>
-        <div id="clean-vis" class="vis"></div>
-
-        <p class="vis-below">
-          Data Source: U.S. Energy Information Administration
-        </p>
+      <div class="container">
+        <div class="modular-left">
+          <div class="vis">
+            <p class="vis-title">Clean Energy Additions</p>
+            <div id="clean-vis" class="vis"></div>
+            <p class="vis-below">
+              Data Source: U.S. Energy Information Administration
+            </p>
+          </div>
+        </div>
+        <div class="modular-right">
+          <p>
+            To keep up with the growing demand for energy, the supply of clean
+            energy sources is increasing.
+          </p>
+        </div>
       </div>
 
-      <p>
-        But not enough to keep up with the pace of the increasing demand for
-        electricity.
-      </p>
-      <div class="vis">
-        <p class="vis-title">Clean Energy vs Electricty Demand</p>
-        <div id="clean-demand-vis" class="vis"></div>
-        <p class="vis-below">Data Source</p>
-      </div>
-
-      <p>
-        While the demand is increasing, it outpaces the deployment of clean
-        energy sources, leading to a net increase of global emissions. So the
-        supply of non-clean energy sources, such as coal, is projected to
-        increase in order to keep up with the demand. Leading to an overall
-        increase in (carbon) emissions.
-      </p>
-      <div class="vis">
-        <p class="vis-title">Energy Sources and Demand</p>
-        <div id="clean-non-demand-vis" class="vis"></div>
-
-        <p class="vis-below">Data Source</p>
+      <div class="container">
+        <div class="modular-left">
+          <div class="vis">
+            <p class="vis-title">Clean Energy Consumed By Source</p>
+            <p class="button" id="button-nr"></p>
+            <div id="clean-demand-vis" class="vis"></div>
+            <p class="vis-below">
+              Data Source: U.S. Energy Information Administration
+            </p>
+          </div>
+        </div>
+        <div class="modular-right">
+          <p>
+            However, these new clean energy sources are being added quickly
+            enough to meet the needs of the increased demands of US power grid.
+            And so, other non-remewable sources continue to fill this gap.
+          </p>
+        </div>
       </div>
     </div>
 
