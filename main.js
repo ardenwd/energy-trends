@@ -334,7 +334,7 @@ d3.csv("clean-energy-net-change.csv").then(function (dataset) {
 
   // Define scales
   const xScale = d3.scaleLinear().domain([2011, 2025]).range([0, width]);
-  const yScale = d3.scaleLinear().domain([-4, 40]).range([height, 20]);
+  const yScale = d3.scaleLinear().domain([-4, 60]).range([height, 20]);
 
   const visID = "clean-vis";
   var svg = d3
@@ -388,11 +388,13 @@ d3.csv("clean-energy-net-change.csv").then(function (dataset) {
     })
     // .attr("y", (d) => yScale(Math.max(0, d.count)))
     .attr("y", function (d, i) {
+      console.log("d", d);
       if (d[0] > d[1]) {
         return yScale(0) + 1;
         // }
       }
-      return yScale(0) - Math.abs(yScale(d[0]) - yScale(d[1]));
+      return Math.abs(yScale(d[0])) - Math.abs(yScale(d[0]) - yScale(d[1]));
+      // return yScale(0) - Math.abs(yScale(d[0]) - yScale(d[1]));
     })
     .attr("height", function (d) {
       if (d[0] > d[1]) {
